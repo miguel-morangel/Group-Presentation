@@ -25,11 +25,3 @@ pytest>=7.4.0
 black>=23.9.0
 flake8>=6.1.0
 jupyter>=1.0.0
-
-# Python version requirement
-python_requires = ">=3.9"
-
-# Ensure Python >= 3.9 compatibility
-# Additional system requirements:
-# - gcc/g++ compiler for certain package installations
-# - Python development headers

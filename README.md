@@ -36,6 +36,10 @@ A data-driven marketing analytics platform for optimizing cat-related content an
 
 ## Installation
 
+0. Make sure you have ssh keys properly set up with Github.
+
+Look up instructions to set up ssh keys. 
+
 1. Clone the repository:
 
 ```bash
@@ -141,26 +145,6 @@ The platform expects three main data files:
    - Performance metrics
    - Posting details
 
-## Development
-
-1. Install development dependencies:
-
-```bash
-pip install -r requirements.txt
-```
-
-2. Run tests:
-
-```bash
-pytest
-```
-
-3. Format code:
-
-```bash
-black .
-flake8
-```
 
 ## Troubleshooting
 
@@ -188,21 +172,6 @@ flake8
   2. Select "Desktop development with C++"
   3. Restart your system
 
-#### macOS
-
-- If you get compilation errors:
-
-  ```bash
-  xcode-select --install
-  ```
-
-#### Linux
-
-- If you get build errors:
-
-  ```bash
-  sudo apt-get install python3-dev build-essential
-  ```
 
 ## License
 

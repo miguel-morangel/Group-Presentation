@@ -39,8 +39,7 @@ A data-driven marketing analytics platform for optimizing cat-related content an
 1. Clone the repository:
 
 ```bash
-git clone https://github.com/yourusername/catmarketing.git
-cd catmarketing
+git clone git@github.com:miguel-morangel/Group-Presentation.git
 ```
 
 2. Create and activate a virtual environment:

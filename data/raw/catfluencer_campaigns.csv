@@ -1,0 +1,21 @@
+campaign_id,start_date,end_date,budget,platform,target_audience,campaign_goal
+1,2024-01-01,2024-01-07,973.54,Facebook,General,Sales
+2,2024-01-19,2024-01-25,967.31,TikTok,Pet Owners,Sales
+3,2024-02-06,2024-02-12,3835.05,Facebook,General,Brand Awareness
+4,2024-02-24,2024-03-01,4324.85,Facebook,Pet Owners,Sales
+5,2024-03-13,2024-03-19,4162.98,Instagram,Young Adults,Sales
+6,2024-03-31,2024-04-06,4960.41,TikTok,Pet Owners,Brand Awareness
+7,2024-04-18,2024-04-24,4486.94,Instagram,Pet Owners,Engagement
+8,2024-05-06,2024-05-12,2421.31,Instagram,General,Sales
+9,2024-05-24,2024-05-30,2520.12,Instagram,General,Brand Awareness
+10,2024-06-11,2024-06-17,1885.29,TikTok,Pet Owners,Sales
+11,2024-06-29,2024-07-05,1482.49,TikTok,General,Engagement
+12,2024-07-17,2024-07-23,4062.83,TikTok,Pet Owners,Engagement
+13,2024-08-04,2024-08-10,3370.56,TikTok,General,Engagement
+14,2024-08-22,2024-08-28,1131.26,TikTok,General,Engagement
+15,2024-09-09,2024-09-15,3655.0,TikTok,General,Sales
+16,2024-09-27,2024-10-03,1371.85,Facebook,Pet Owners,Brand Awareness
+17,2024-10-15,2024-10-21,2358.43,TikTok,General,Brand Awareness
+18,2024-11-02,2024-11-08,4514.68,Facebook,Young Adults,Engagement
+19,2024-11-20,2024-11-26,790.29,Facebook,Young Adults,Engagement
+20,2024-12-08,2024-12-14,2172.16,Facebook,Pet Owners,Engagement

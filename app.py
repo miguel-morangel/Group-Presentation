@@ -232,7 +232,37 @@ def show_overview():
     
     with clustering_tab:
         st.subheader("Engagement Clustering Analysis")
+        
+        # Add explanation of engagement groups
+        st.markdown("""
+        ### Understanding Engagement Groups
+        
+        Posts are automatically grouped into three engagement levels based on their performance:
+        
+        **High Engagement Posts** 🚀
+        - Posts with the highest combined likes, comments, and shares
+        - Typically your best-performing content
+        - Use these insights to understand what makes your top content successful
+        
+        **Medium Engagement Posts** ⚖️
+        - Posts with moderate levels of engagement
+        - Your typical content performance
+        - Helps identify baseline engagement patterns
+        
+        **Low Engagement Posts** 📉
+        - Posts with the lowest combined engagement metrics
+        - Helps identify content that needs improvement
+        - Use these insights to avoid underperforming content patterns
+        
+        The grouping is determined by analyzing the total engagement (sum of likes, comments, and shares) 
+        of each post using K-means clustering. This helps identify which posts are performing best and 
+        understand the distribution of engagement across your content.
+        """)
+        
         clustered_posts = clustering.perform_clustering(posts_df)
+        
+        # Display engagement statistics
+        display_engagement_stats(clustered_posts)
         
         # Get the clustering plots
         elbow_fig, scatter_fig, box_fig = clustering.plot_clustering_analysis(clustered_posts)
@@ -248,14 +278,23 @@ def show_overview():
             st.pyplot(box_fig)
             
             # Add cluster statistics
-            st.subheader("Cluster Statistics")
-            cluster_stats = clustered_posts.groupby('engagement_cluster').agg({
-                'likes': 'mean',
-                'comments': 'mean',
-                'shares': 'mean'
+            st.subheader("Detailed Cluster Statistics")
+            cluster_stats = clustered_posts.groupby('engagement_level').agg({
+                'likes': ['mean', 'std', 'min', 'max'],
+                'comments': ['mean', 'std', 'min', 'max'],
+                'shares': ['mean', 'std', 'min', 'max']
             }).round(2)
             
-            st.dataframe(cluster_stats)
+            # Format the statistics for better display
+            cluster_stats.columns = ['_'.join(col).strip() for col in cluster_stats.columns.values]
+            cluster_stats = cluster_stats.reset_index()
+            
+            # Display the statistics in a more readable format
+            st.dataframe(
+                cluster_stats,
+                use_container_width=True,
+                hide_index=True
+            )
     
     with nlp_tab:
         st.subheader("Content Analysis")
@@ -882,6 +921,35 @@ def show_insights():
                     st.markdown(f"{i}. {takeaway}")
         else:
             st.warning("No insights available")
+
+def display_engagement_stats(clustered_posts):
+    """
+    Display engagement statistics in a user-friendly way using Streamlit components.
+    
+    Args:
+        clustered_posts: DataFrame with engagement_level column
+    """
+    st.subheader("Engagement Level Analysis")
+    
+    # Create three columns for the three engagement levels
+    col1, col2, col3 = st.columns(3)
+    
+    for level, col in zip(["High", "Medium", "Low"], [col1, col2, col3]):
+        with col:
+            group_data = clustered_posts[clustered_posts["engagement_level"] == level]
+            total_engagement = group_data[["likes", "comments", "shares"]].sum(axis=1).mean()
+            
+            # Create a card-like container
+            st.markdown(f"""
+            <div style='padding: 20px; border-radius: 10px; background-color: #f0f2f6; margin: 10px 0;'>
+                <h3 style='color: #1f77b4;'>{level} Engagement</h3>
+                <p>Posts: {len(group_data)}</p>
+                <p>Avg Likes: {group_data['likes'].mean():.0f}</p>
+                <p>Avg Comments: {group_data['comments'].mean():.0f}</p>
+                <p>Avg Shares: {group_data['shares'].mean():.0f}</p>
+                <p><strong>Total Engagement:</strong> {total_engagement:.0f}</p>
+            </div>
+            """, unsafe_allow_html=True)
 
 # Sidebar navigation
 st.sidebar.title("Navigation")

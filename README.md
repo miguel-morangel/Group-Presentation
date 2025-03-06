@@ -2,7 +2,7 @@
 
 A data-driven marketing analytics platform for optimizing cat-related content and campaigns. This platform provides predictive analytics, data visualization, and business recommendations for cat-related marketing campaigns.
 
-Access the Streamlit Application here[https://catmarketing.streamlit.app/].
+Access the Streamlit Application [here](https://catmarketing.streamlit.app/).
 
 ## Features
 
